@@ -1,1 +1,51 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Recommendation</title>
+    <style>
+        body {
+            margin: 0; font-family: Arial, sans-serif; background: url('background.jpg') center/cover no-repeat;
+        }
+        .navbar {
+            background: #222; color: #fff; display: flex; align-items: center; padding: 10px 0 10px 20px;
+        }
+        .navbar a { color: #fff; margin-right: 15px; text-decoration: none; }
+        .navbar input[type="text"] { margin-left: 15px; padding: 5px; }
+        .navbar button { margin-left: 5px; padding: 6px 10px; }
+        .content { text-align: center; margin-top: 100px; color: #fff; }
+        .headline { font-size: 2.5em; font-weight: bold; }
+        .description { margin: 15px auto; font-size: 1.2em; max-width: 600px;}
+        .recommendations { width: 80%; margin: 30px auto 0 auto; display: flex; flex-wrap: wrap; justify-content: center; }
+        .card { background: rgba(255,255,255,0.93); color: #333; border-radius: 10px; margin: 10px; padding: 20px; width: 320px;}
+        .card img { max-width: 100%; border-radius: 8px;}
+        .social { margin: 20px; }
+        .social img { width: 40px; margin: 0 5px; vertical-align: middle;}
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="travel_recommendation.html"><b>Home</b></a>
+        <a href="about_us.html">About Us</a>
+        <a href="contact_us.html">Contact Us</a>
+        <input type="text" id="searchInput" placeholder="Search destinations...">
+        <button id="searchBtn">Search</button>
+        <button id="clearBtn">Clear</button>
+    </div>
+    <div class="content" id="home">
+        <div class="headline">Discover Your Next Adventure!</div>
+        <div class="description">
+            Embark on a journey tailored to your interests. Explore beaches, temples, and must-see destinations worldwide!
+        </div>
+        <button onclick="alert('Booking coming soon!')">Book Now</button>
+        <div class="social">
+            <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
+            <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+            <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
+        </div>
+        <div id="recommendations" class="recommendations"></div>
+    </div>
+    <script src="travel_recommendation.js"></script>
+</body>
+</html>
