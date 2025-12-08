@@ -1,6 +1,9 @@
 // Travel Recommendation JavaScript
 let travelData = null;
 
+// Fallback image for when images fail to load
+const FALLBACK_IMAGE = "data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23ddd%22 width=%22300%22 height=%22200%22/%3E%3Ctext fill=%22%23999%22 font-family=%22Arial%22 font-size=%2218%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3EImage not available%3C/text%3E%3C/svg%3E";
+
 // Load data from JSON file
 async function loadTravelData() {
     try {
@@ -148,11 +151,11 @@ function displayResults(results) {
     results.forEach(result => {
         html += `
             <div class="result-card">
-                <img src="${result.imageUrl}" alt="${result.name}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23ddd%22 width=%22300%22 height=%22200%22/%3E%3Ctext fill=%22%23999%22 font-family=%22Arial%22 font-size=%2218%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3EImage not available%3C/text%3E%3C/svg%3E'">
+                <img src="${result.imageUrl}" alt="${result.name}" onerror="this.src='${FALLBACK_IMAGE}'">
                 <div class="result-card-content">
                     <h3>${result.name}</h3>
                     <p>${result.description}</p>
-                    <a href="#" class="visit-btn">Visit</a>
+                    <button class="visit-btn" onclick="window.open('https://www.google.com/search?q=${encodeURIComponent(result.name)}', '_blank')">Visit</button>
                 </div>
             </div>
         `;
