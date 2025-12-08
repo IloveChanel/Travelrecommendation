@@ -1,1 +1,38 @@
 
+[
+  {
+    "name": "Bondi Beach",
+    "country": "Australia",
+    "tags": ["beach"],
+    "imageUrl": "bondi.jpg",
+    "description": "One of the world's most famous beaches, perfect for surf and sun."
+  },
+  {
+    "name": "Whitehaven Beach",
+    "country": "Australia",
+    "tags": ["beach"],
+    "imageUrl": "whitehaven.jpg",
+    "description": "Crystal clear waters and white sands await you at Whitehaven Beach."
+  },
+  {
+    "name": "Angkor Wat",
+    "country": "Cambodia",
+    "tags": ["temple"],
+    "imageUrl": "angkor.jpg",
+    "description": "The largest religious monument in the world."
+  },
+  {
+    "name": "Wat Pho",
+    "country": "Thailand",
+    "tags": ["temple"],
+    "imageUrl": "watpho.jpg",
+    "description": "Famous for its giant reclining Buddha."
+  },
+  {
+    "name": "Santorini",
+    "country": "Greece",
+    "tags": ["island","beach"],
+    "imageUrl": "santorini.jpg",
+    "description": "White-washed villages and blue domes overlooking the sea."
+  }
+]
