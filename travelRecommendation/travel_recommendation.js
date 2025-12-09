@@ -1,177 +1,93 @@
-// Travel Recommendation JavaScript
+const API_URL = 'travel_recommendation_api.json';
+
 let travelData = null;
 
-// Fallback image for when images fail to load
-const FALLBACK_IMAGE = "data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23ddd%22 width=%22300%22 height=%22200%22/%3E%3Ctext fill=%22%23999%22 font-family=%22Arial%22 font-size=%2218%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3EImage not available%3C/text%3E%3C/svg%3E";
+// Task 6: fetch JSON and log it
+fetch(API_URL)
+  .then(res => res.json())
+  .then(data => {
+    travelData = data;
+    console.log('Travel data loaded:', data); // check DevTools console
+  })
+  .catch(err => console.error('Error fetching travel data:', err));
 
-// Load data from JSON file
-async function loadTravelData() {
-    try {
-        const response = await fetch('travel_recommendation_api.json');
-        travelData = await response.json();
-        console.log('Travel data loaded successfully');
-    } catch (error) {
-        console.error('Error loading travel data:', error);
-    }
-}
+// DOM elements on the home page
+const searchInput = document.getElementById('search-input');
+const searchBtn = document.getElementById('search-btn');
+const resetBtn = document.getElementById('reset-btn');
+const resultsDiv = document.getElementById('results');
 
-// Initialize the application
-document.addEventListener('DOMContentLoaded', () => {
-    loadTravelData();
-    
-    const searchBtn = document.getElementById('searchBtn');
-    const resetBtn = document.getElementById('resetBtn');
-    const searchInput = document.getElementById('searchInput');
-    
-    searchBtn.addEventListener('click', performSearch);
-    resetBtn.addEventListener('click', resetSearch);
-    
-    // Allow Enter key to trigger search
-    searchInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            performSearch();
-        }
+// Task 7 & 8: handle Search button
+function handleSearch() {
+  if (!travelData || !searchInput || !resultsDiv) return;
+
+  const keyword = searchInput.value.trim().toLowerCase();
+  resultsDiv.innerHTML = '';
+
+  if (!keyword) return;
+
+  let items = [];
+
+  if (keyword.includes('beach')) {
+    items = travelData.beaches || [];
+  } else if (keyword.includes('temple')) {
+    items = travelData.temples || [];
+  } else if (keyword.includes('country')) {
+    // flatten cities from all countries
+    const list = [];
+    (travelData.countries || []).forEach(country => {
+      (country.cities || []).forEach(city => list.push(city));
     });
-});
+    items = list;
+  }
 
-// Perform search based on user input
-function performSearch() {
-    const searchInput = document.getElementById('searchInput');
-    const query = searchInput.value.trim().toLowerCase();
-    
-    if (!query) {
-        displayMessage('Please enter a search term');
-        return;
-    }
-    
-    if (!travelData) {
-        displayMessage('Loading data, please try again...');
-        return;
-    }
-    
-    const results = searchRecommendations(query);
-    displayResults(results);
+  if (items.length === 0) {
+    resultsDiv.innerHTML =
+      '<p>No results. Try "beach", "temple", or "country".</p>';
+    return;
+  }
+
+  // show at least two cards
+  items.slice(0, 2).forEach(item => {
+    const card = document.createElement('article');
+    card.className = 'card';
+
+    card.innerHTML = `
+      <img src="${item.imageUrl}" alt="${item.name}">
+      <h2>${item.name}</h2>
+      <p>${item.description}</p>
+      <p class="time"></p>
+    `;
+
+    resultsDiv.appendChild(card);
+  });
+
+  // optional Task 10: show local time (if you later add timezones)
+  updateTimes();
 }
 
-// Search through all recommendations
-function searchRecommendations(query) {
-    const results = [];
-    
-    // Normalize query for better matching
-    const normalizedQuery = query.toLowerCase();
-    
-    // Search countries and cities
-    if (matchesKeyword(normalizedQuery, ['country', 'countries', 'city', 'cities'])) {
-        travelData.countries.forEach(country => {
-            country.cities.forEach(city => {
-                results.push({
-                    type: 'city',
-                    ...city
-                });
-            });
-        });
-    }
-    
-    // Search temples
-    if (matchesKeyword(normalizedQuery, ['temple', 'temples'])) {
-        travelData.temples.forEach(temple => {
-            results.push({
-                type: 'temple',
-                ...temple
-            });
-        });
-    }
-    
-    // Search beaches
-    if (matchesKeyword(normalizedQuery, ['beach', 'beaches'])) {
-        travelData.beaches.forEach(beach => {
-            results.push({
-                type: 'beach',
-                ...beach
-            });
-        });
-    }
-    
-    // If no category matches, search by name in all categories
-    if (results.length === 0) {
-        // Search in countries/cities
-        travelData.countries.forEach(country => {
-            country.cities.forEach(city => {
-                if (city.name.toLowerCase().includes(normalizedQuery) || 
-                    city.description.toLowerCase().includes(normalizedQuery)) {
-                    results.push({
-                        type: 'city',
-                        ...city
-                    });
-                }
-            });
-        });
-        
-        // Search in temples
-        travelData.temples.forEach(temple => {
-            if (temple.name.toLowerCase().includes(normalizedQuery) || 
-                temple.description.toLowerCase().includes(normalizedQuery)) {
-                results.push({
-                    type: 'temple',
-                    ...temple
-                });
-            }
-        });
-        
-        // Search in beaches
-        travelData.beaches.forEach(beach => {
-            if (beach.name.toLowerCase().includes(normalizedQuery) || 
-                beach.description.toLowerCase().includes(normalizedQuery)) {
-                results.push({
-                    type: 'beach',
-                    ...beach
-                });
-            }
-        });
-    }
-    
-    return results;
+// Task 9: Clear button
+function handleReset() {
+  if (searchInput) searchInput.value = '';
+  if (resultsDiv) resultsDiv.innerHTML = '';
 }
 
-// Helper function to match keywords
-function matchesKeyword(query, keywords) {
-    return keywords.some(keyword => query.includes(keyword));
+// Optional Task 10 (simple version – same time everywhere)
+function updateTimes() {
+  const timeElems = document.querySelectorAll('.time');
+  const options = {
+    hour12: true,
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric'
+  };
+  const now = new Date().toLocaleTimeString('en-US', options);
+  timeElems.forEach(el => {
+    el.textContent = `Current local time: ${now}`;
+  });
 }
 
-// Display search results
-function displayResults(results) {
-    const resultsContainer = document.getElementById('results');
-    
-    if (results.length === 0) {
-        resultsContainer.innerHTML = '<div class="no-results">No recommendations found. Try searching for "beaches", "temples", or "countries".</div>';
-        return;
-    }
-    
-    let html = '';
-    results.forEach(result => {
-        html += `
-            <div class="result-card">
-                <img src="${result.imageUrl}" alt="${result.name}" onerror="this.src='${FALLBACK_IMAGE}'">
-                <div class="result-card-content">
-                    <h3>${result.name}</h3>
-                    <p>${result.description}</p>
-                    <button class="visit-btn" onclick="window.open('https://www.google.com/search?q=${encodeURIComponent(result.name)}', '_blank')">Visit</button>
-                </div>
-            </div>
-        `;
-    });
-    
-    resultsContainer.innerHTML = html;
-}
+// wire up buttons
+if (searchBtn) searchBtn.addEventListener('click', handleSearch);
+if (resetBtn) resetBtn.addEventListener('click', handleReset);
 
-// Display a message to the user
-function displayMessage(message) {
-    const resultsContainer = document.getElementById('results');
-    resultsContainer.innerHTML = `<div class="no-results">${message}</div>`;
-}
-
-// Reset search and clear results
-function resetSearch() {
-    document.getElementById('searchInput').value = '';
-    document.getElementById('results').innerHTML = '';
-}

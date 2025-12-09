@@ -5,15 +5,13 @@
       "name": "Australia",
       "cities": [
         {
-          "id": 1,
           "name": "Sydney, Australia",
           "imageUrl": "sydney.jpg",
           "description": "A vibrant city known for its iconic landmarks like the Sydney Opera House and Sydney Harbour Bridge."
         },
         {
-          "id": 2,
           "name": "Melbourne, Australia",
-          "imageUrl": "melbourne.jpg",
+          "imageUrl": "https://unsplash.com/photos/white-bridge-across-city-buildings--gmtAa0Q5MI",
           "description": "A cultural hub famous for its art, food, and diverse neighborhoods."
         }
       ]
@@ -23,16 +21,14 @@
       "name": "Japan",
       "cities": [
         {
-          "id": 3,
           "name": "Tokyo, Japan",
-          "imageUrl": "tokyo.jpg",
+          "imageUrl": "https://unsplash.com/photos/people-walking-on-road-near-well-lit-buildings-layMbSJ3YOE",
           "description": "A bustling metropolis blending tradition and modernity, famous for its cherry blossoms and rich culture."
         },
         {
-          "id": 4,
           "name": "Kyoto, Japan",
-          "imageUrl": "kyoto.jpg",
-          "description": "Known for its historic temples, traditional tea houses, and beautiful gardens."
+          "imageUrl": "",
+          "description": "Known for its historic temples, gardens, and traditional tea houses."
         }
       ]
     },
@@ -41,15 +37,13 @@
       "name": "Brazil",
       "cities": [
         {
-          "id": 5,
           "name": "Rio de Janeiro, Brazil",
-          "imageUrl": "rio.jpg",
+          "imageUrl": "https://unsplash.com/photos/a-group-of-palm-trees-DEnsSdJHVkk",
           "description": "A lively city known for its stunning beaches, vibrant carnival celebrations, and iconic landmarks."
         },
         {
-          "id": 6,
           "name": "São Paulo, Brazil",
-          "imageUrl": "sao-paulo.jpg",
+          "imageUrl": "https://unsplash.com/photos/gray-concrete-bridge-over-river-nxkinK7hhOk",
           "description": "The financial hub with diverse culture, arts, and a vibrant nightlife."
         }
       ]
@@ -59,40 +53,28 @@
     {
       "id": 1,
       "name": "Angkor Wat, Cambodia",
-      "imageUrl": "angkor-wat.jpg",
+      "imageUrl": "https://unsplash.com/photos/people-walking-on-park-near-trees-and-building-during-daytime-gt3gK_Wob2g",
       "description": "A UNESCO World Heritage site and the largest religious monument in the world."
     },
     {
       "id": 2,
       "name": "Taj Mahal, India",
-      "imageUrl": "taj-mahal.jpg",
-      "description": "An iconic white marble mausoleum, a symbol of eternal love and a masterpiece of Mughal architecture."
-    },
-    {
-      "id": 3,
-      "name": "Borobudur, Indonesia",
-      "imageUrl": "borobudur.jpg",
-      "description": "A magnificent Buddhist temple with intricate stone carvings and stunning views."
+      "imageUrl": "https://unsplash.com/photos/taj-mahal-india-iWMfiInivp4",
+      "description": "An iconic symbol of love and a masterpiece of Mughal architecture."
     }
   ],
   "beaches": [
     {
       "id": 1,
       "name": "Bora Bora, French Polynesia",
-      "imageUrl": "bora-bora.jpg",
-      "description": "An island paradise with crystal-clear waters and luxurious overwater bungalows."
+      "imageUrl": "https://unsplash.com/photos/aerial-view-of-white-and-gray-boat-on-sea-during-daytime-LFRUK7mslpk",
+      "description": "An island known for its stunning turquoise waters and luxurious overwater bungalows."
     },
     {
       "id": 2,
       "name": "Copacabana Beach, Brazil",
-      "imageUrl": "copacabana.jpg",
-      "description": "One of the most famous beaches in the world, known for its scenic coastline and vibrant atmosphere."
-    },
-    {
-      "id": 3,
-      "name": "Maldives",
-      "imageUrl": "maldives.jpg",
-      "description": "A tropical paradise with pristine beaches, clear blue waters, and incredible marine life."
+      "imageUrl": "https://unsplash.com/photos/people-on-beach-during-daytime-dPYmxwKLGOI",
+      "description": "A famous beach in Rio de Janeiro, Brazil, with a vibrant atmosphere and scenic views."
     }
   ]
 }
