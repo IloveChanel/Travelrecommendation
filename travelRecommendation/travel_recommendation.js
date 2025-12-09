@@ -2,12 +2,12 @@ const API_URL = 'travel_recommendation_api.json';
 
 let travelData = null;
 
-// Task 6: fetch JSON and log it
+// Fetch JSON data
 fetch(API_URL)
   .then(res => res.json())
   .then(data => {
     travelData = data;
-    console.log('Travel data loaded:', data); // check DevTools console
+    console.log('Travel data loaded:', data);
   })
   .catch(err => console.error('Error fetching travel data:', err));
 
@@ -17,7 +17,7 @@ const searchBtn = document.getElementById('search-btn');
 const resetBtn = document.getElementById('reset-btn');
 const resultsDiv = document.getElementById('results');
 
-// Task 7 & 8: handle Search button
+// Handle Search button
 function handleSearch() {
   if (!travelData || !searchInput || !resultsDiv) return;
 
@@ -47,7 +47,7 @@ function handleSearch() {
     return;
   }
 
-  // show at least two cards
+  // show maximum of 2 cards
   items.slice(0, 2).forEach(item => {
     const card = document.createElement('article');
     card.className = 'card';
@@ -62,17 +62,17 @@ function handleSearch() {
     resultsDiv.appendChild(card);
   });
 
-  // optional Task 10: show local time (if you later add timezones)
+  // show local time
   updateTimes();
 }
 
-// Task 9: Clear button
+// Clear button
 function handleReset() {
   if (searchInput) searchInput.value = '';
   if (resultsDiv) resultsDiv.innerHTML = '';
 }
 
-// Optional Task 10 (simple version – same time everywhere)
+// Update time display
 function updateTimes() {
   const timeElems = document.querySelectorAll('.time');
   const options = {

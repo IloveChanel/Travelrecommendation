@@ -12,7 +12,7 @@ body {
 /* Full-page hero */
 .home-hero {
   min-height: 100vh;
-  background-image: url("nyc-hero.jpg"); /* or Images/nyc-hero.jpg if that's your path */
+  background-image: url("nyc-hero.jpg");
   background-size: cover;
   background-position: center;
   position: relative;
