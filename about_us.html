@@ -1,165 +1,89 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>TravelBloom</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Optional external CSS -->
-    <link rel="stylesheet" href="travel_recommendation.css" />
-    <style>
-        /* Minimal inline styling so it looks okay even without the CSS file */
-
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            color: #fff;
-            background-image: url("./images/travel.jpg"); /* put your image here */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        header {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-weight: bold;
-            font-size: 1.4rem;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin-right: 15px;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .nav-right input[type="text"] {
-            padding: 5px;
-            border-radius: 4px;
-            border: none;
-        }
-
-        .nav-right button {
-            padding: 6px 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        main {
-            padding: 40px 20px;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.3);
-            min-height: calc(100vh - 60px);
-        }
-
-        .hero-title {
-            font-size: 2.4rem;
-            margin-bottom: 10px;
-        }
-
-        .hero-text {
-            max-width: 600px;
-            margin: 0 auto 20px auto;
-            font-size: 1.1rem;
-        }
-
-        .socials a {
-            margin: 0 10px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.2rem;
-        }
-
-        #results {
-            margin-top: 30px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .card {
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 8px;
-            max-width: 280px;
-            padding: 15px;
-            text-align: left;
-        }
-
-        .card img {
-            width: 100%;
-            border-radius: 6px;
-        }
-
-        .card h3 {
-            margin: 10px 0 5px;
-        }
-
-        .card-time {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - TravelBloom</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- NAVBAR -->
-    <header>
-        <div class="logo">TravelBloom</div>
-        <nav>
-            <a href="travel_recommendation.html">Home</a>
-            <a href="about_us.html">About Us</a>
-            <a href="contact_us.html">Contact Us</a>
-        </nav>
-        <!-- Search bar + buttons only on HOME page -->
-        <div class="nav-right">
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search: beach, temple, country..."
-            />
-            <button id="searchBtn">Search</button>
-            <button id="clearBtn" type="button">Reset</button>
-        </div>
-    </header>
+  <!-- Navbar WITHOUT search -->
+  <header class="navbar">
+    <div class="navbar-left">
+      <div class="brand">
+        <span class="brand-icon">✈</span>
+        <span class="brand-text">TravelBloom</span>
+      </div>
+    </div>
 
-    <!-- HOME CONTENT -->
-    <main>
-        <h1 class="hero-title">Discover Your Next Adventure</h1>
-        <p class="hero-text">
-            Welcome to TravelBloom, your personal travel recommendation guide.
-            Type <strong>beach</strong>, <strong>temple</strong>, or
-            <strong>country</strong> in the search bar to explore hand-picked
-            destinations around the world.
+    <nav class="navbar-center">
+      <a href="travel_recommendation.html">Home</a>
+      <a href="about_us.html" class="active">About Us</a>
+      <a href="contact_us.html">Contact Us</a>
+    </nav>
+
+    <div class="navbar-right"></div>
+  </header>
+
+  <main class="about">
+    <div class="about-overlay"></div>
+
+    <!-- social icons on left -->
+    <div class="social-icons">
+      <a href="#" aria-label="Twitter">T</a>
+      <a href="#" aria-label="Facebook">F</a>
+      <a href="#" aria-label="Instagram">I</a>
+      <a href="#" aria-label="YouTube">Y</a>
+    </div>
+
+    <div class="about-inner">
+      <h1 class="about-title">About Us</h1>
+
+      <section class="about-text-box">
+        <p>
+          Welcome to TravelBloom! We are a team of passionate individuals
+          dedicated to providing excellent travel recommendations to our
+          customers. Our mission is to provide the best experience for
+          people traveling to different destinations around the world.
         </p>
+        <p>
+          Our values include integrity, innovation, customer satisfaction and
+          teamwork. We believe in putting our customers first and working
+          together to achieve their travel goals.
+        </p>
+        <p>
+          Feel free to explore our website to learn more about what we offer
+          and to discover your next great adventure.
+        </p>
+      </section>
 
-        <!-- Optional social icons -->
-        <div class="socials">
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-            <a href="#">Twitter</a>
+      <section class="team-section">
+        <div class="team-heading">
+          Our<br>Team
         </div>
 
-        <!-- Recommendation results will appear here -->
-        <section id="results"></section>
-    </main>
+        <div class="team-cards">
+          <article class="team-card">
+            <h3>John Doe</h3>
+            <p>John is responsible for overall strategy and partnerships.</p>
+            <span class="team-role-pill">CEO</span>
+          </article>
 
-    <!-- JavaScript -->
-    <script src="travel_recommendation.js" defer></script>
+          <article class="team-card">
+            <h3>Celina Thomas</h3>
+            <p>Celina leads our destination research and recommendations.</p>
+            <span class="team-role-pill">Team Lead</span>
+          </article>
+
+          <article class="team-card">
+            <h3>Mike Tysen</h3>
+            <p>Mike manages customer experience and trip planning support.</p>
+            <span class="team-role-pill">Delivery Head</span>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
 </body>
 </html>
