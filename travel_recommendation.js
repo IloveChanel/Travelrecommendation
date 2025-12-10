@@ -1,3 +1,4 @@
+
 // travel_recommendation.js
 
 let travelData = null;
@@ -60,7 +61,7 @@ function handleSearch() {
         matches = travelData.temples || [];
     } else if (keyword.includes("country")) {
         // For countries, show all cities inside countries
-        travelData.countries.forEach(country => {
+        (travelData.countries || []).forEach(country => {
             if (country.cities && Array.isArray(country.cities)) {
                 matches = matches.concat(country.cities);
             }
@@ -90,13 +91,14 @@ function renderResults(list) {
             return `
                 <article class="card">
                     <img src="${item.imageUrl}" alt="${item.name}" />
-                    <h3>${item.name}</h3>
+                    <h2>${item.name}</h2>
                     <p>${item.description}</p>
                     ${
                         time
                             ? `<p class="card-time">Local time: ${time}</p>`
                             : ""
                     }
+                    <a href="#" class="card-visit">Visit</a>
                 </article>
             `;
         })
