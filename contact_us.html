@@ -1,55 +1,66 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us – Michelle Travel Explorer</title>
+  <title>Contact Us - TravelBloom</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Navbar -->
+  <!-- Navbar WITHOUT search -->
   <header class="navbar">
-    <div class="brand">Michelle Travel Explorer</div>
-    <nav>
+    <div class="navbar-left">
+      <div class="brand">
+        <span class="brand-icon">✈</span>
+        <span class="brand-text">TravelBloom</span>
+      </div>
+    </div>
+
+    <nav class="navbar-center">
       <a href="travel_recommendation.html">Home</a>
       <a href="about_us.html">About Us</a>
-      <a href="contact_us.html">Contact Us</a>
+      <a href="contact_us.html" class="active">Contact Us</a>
     </nav>
-    <div class="search-area">
-      <input type="text" id="searchInput" placeholder="Search destinations...">
-      <button id="search-btn">Search</button>
-      <button id="reset-btn">Clear</button>
-    </div>
+
+    <div class="navbar-right"></div>
   </header>
 
-  <!-- About Content -->
-  <main class="about">
-    <div class="about-content">
-      <section class="hero-section">
-        <h1>About Michelle Travel Explorer</h1>
-        <p>Curated travel recommendations powered by real expertise and stunning destinations worldwide.</p>
-      </section>
+  <main class="contact">
+    <div class="contact-overlay"></div>
 
-      <section class="team-section">
-        <h2>Our Expert Team</h2>
-        <ul class="team-list">
-          <li class="team-member">
-            <strong>Michelle Vance</strong>
-            <span class="role">Founder & Lead Developer</span>
-            <p>Full-stack developer creating innovative travel solutions with Google Ads expertise and custom web design.</p>
-          </li>
-          <li class="team-member">
-            <strong>Alex Rivera</strong>
-            <span class="role">UX Designer</span>
-            <p>Designing intuitive interfaces that make travel discovery seamless and enjoyable.</p>
-          </li>
-          <li class="team-member">
-            <strong>Jordan Lee</strong>
-            <span class="role">Travel Researcher</span>
-            <p>Exploring hidden gems and authentic experiences across the globe.</p>
-          </li>
-        </ul>
-      </section>
+    <!-- social icons on left -->
+    <div class="social-icons">
+      <a href="#" aria-label="Twitter">T</a>
+      <a href="#" aria-label="Facebook">F</a>
+      <a href="#" aria-label="Instagram">I</a>
+      <a href="#" aria-label="YouTube">Y</a>
+    </div>
+
+    <div class="contact-inner">
+      <div class="contact-text">
+        <h1 class="contact-title">Contact Us</h1>
+        <p>Get in touch</p>
+      </div>
+
+      <form class="contact-form">
+        <label>
+          Name
+          <input type="text" name="name" required>
+        </label>
+
+        <label>
+          Email
+          <input type="email" name="email" required>
+        </label>
+
+        <label>
+          Message
+          <textarea name="message" rows="4"></textarea>
+        </label>
+
+        <button type="submit">Submit</button>
+      </form>
     </div>
   </main>
 </body>
