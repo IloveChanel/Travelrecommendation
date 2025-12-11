@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Recommendation</title>
+  <link rel="stylesheet" href="travel_recommendation.css">
+</head>
+<body>
+
+  <div class="home-hero">
+    <!-- Fixed navbar -->
+    <div class="navbar">
+      <div class="brand">Travel Recommendation</div>
+      <nav>
+        <a href="travel_recommendation.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+      <div class="search-area">
+        <input type="text" id="search-input" placeholder="Search destinations...">
+        <button id="search-btn">Search</button>
+        <button id="reset-btn">Clear</button>
+      </div>
+    </div>
+
+    <!-- Social icons on the left -->
+    <div class="social-icons">
+      <a href="#" title="Facebook">f</a>
+      <a href="#" title="Twitter">t</a>
+      <a href="#" title="Instagram">i</a>
+    </div>
+
+    <!-- Intro text -->
+    <div class="intro">
+      <h1>Discover Your Next Adventure</h1>
+      <p>
+        Whether you're looking for pristine beaches, ancient temples,
+        or vibrant cities, we've got recommendations tailored for you.
+      </p>
+    </div>
+
+    <!-- Results area (initially empty) -->
+    <div class="results" id="results"></div>
+  </div>
+
+  <script src="travel_recommendation.js"></script>
+</body>
+</html>
